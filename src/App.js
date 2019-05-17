@@ -2,17 +2,8 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function Index() {
-  return <h2>Hi from Index</h2>;
-}
-
-function SubredditInfo({
-  match: {
-    params: { subreddit }
-  }
-}) {
-  return <h2>Hi from {subreddit}</h2>;
-}
+import BestPosts from "./components/BestPosts/BestPosts";
+import SubredditInfo from "./components/SubredditInfo/SubredditInfo";
 
 function App() {
   return (
@@ -28,9 +19,10 @@ function App() {
             </li>
           </ul>
         </nav>
-
-        <Route path="/" exact component={Index} />
-        <Route path="/about/:subreddit" component={SubredditInfo} />
+        <main>
+          <Route path="/" exact component={BestPosts} />
+          <Route path="/about/:subreddit" component={SubredditInfo} />
+        </main>
       </div>
     </Router>
   );

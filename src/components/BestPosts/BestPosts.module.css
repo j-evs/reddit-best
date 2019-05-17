@@ -1,0 +1,80 @@
+.header {
+  padding: 48px var(--mobile-side-padding) 27px;
+}
+
+.headerMain {
+  font-size: 42px;
+  font-weight: var(--font-weight-black);
+  line-height: 1.076;
+  color: var(--blue-700);
+  margin: 0;
+  margin-bottom: 9px;
+}
+
+.headerLabel {
+  font-size: 22px;
+  color: var(--grey-500);
+  margin: 0;
+}
+
+.postsWrapper {
+  margin-bottom: 32px;
+}
+
+.post {
+  padding: 18px var(--mobile-side-padding) 19px;
+  border-top: 1px solid #e5e5e5;
+  background-color: var(--white);
+}
+
+.post:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.postTitle {
+  margin: 0;
+  margin-bottom: 12px;
+  color: var(--blue-700);
+  font-size: 20px;
+  line-height: 1.316;
+}
+
+.postInfoSeparator {
+  font-size: 16px;
+  color: var(--grey-500);
+}
+
+.postSubreddit {
+  color: var(--blue-400);
+  font-weight: var(--font-weight-bold);
+}
+
+.postUpvotes {
+  font-size: 16px;
+  color: var(--grey-500);
+}
+
+.postUpvotesCount {
+  font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 600px) {
+  .bestPosts {
+    max-width: 688px;
+    margin: 0 auto;
+  }
+
+  .header {
+    padding: 80px calc(24px + var(--mobile-side-padding)) 38px;
+  }
+
+  .postsWrapper {
+    padding: 0 var(--mobile-side-padding);
+  }
+
+  .post {
+    margin-bottom: 24px;
+    border: 1px solid var(--grey-200);
+    border-radius: 5px;
+  }
+}

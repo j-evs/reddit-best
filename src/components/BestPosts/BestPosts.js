@@ -31,10 +31,23 @@ const BestPosts = ({ bestPosts, fetchBestPosts, status, postsCount }) => {
 };
 
 const Post = ({
-  post: { title, subreddit_name_prefixed, subreddit, ups: upvotesCount }
+  post: {
+    title,
+    subreddit_name_prefixed,
+    subreddit,
+    ups: upvotesCount,
+    permalink
+  }
 }) => (
   <article className={styles.post}>
-    <h2 className={styles.postTitle}>{title}</h2>
+    <a
+      className={styles.postLink}
+      href={permalink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <h2 className={styles.postTitle}>{title}</h2>
+    </a>
     <Link to={`/about/${subreddit}`} className={styles.postSubreddit}>
       {subreddit_name_prefixed}
     </Link>

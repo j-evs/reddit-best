@@ -20,6 +20,10 @@
   line-height: 1.316;
 }
 
+.postLink {
+  text-decoration: none;
+}
+
 .postInfoSeparator {
   color: var(--grey-500);
 }

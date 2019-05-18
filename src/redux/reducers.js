@@ -162,7 +162,7 @@ const parseBestPosts = posts =>
       data: { id, permalink, ups, title, subreddit_name_prefixed, subreddit }
     }) => ({
       id,
-      permalink: `www.reddit.com/${permalink}`,
+      permalink: `https://www.reddit.com/${permalink}`,
       ups,
       title,
       subreddit_name_prefixed,

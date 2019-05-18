@@ -21,13 +21,11 @@ const requestBestPostsError = err => ({
   payload: { error: err }
 });
 
-export const fetchBestPosts = ({ count }) => {
-  return dispatch => {
-    dispatch(requestBestPosts());
-    return getBestPosts({ count })
-      .then(posts => dispatch(receiveBestPosts(posts)))
-      .catch(err => dispatch(requestBestPostsError(err)));
-  };
+export const fetchBestPosts = ({ count }) => dispatch => {
+  dispatch(requestBestPosts());
+  return getBestPosts({ count })
+    .then(posts => dispatch(receiveBestPosts(posts)))
+    .catch(err => dispatch(requestBestPostsError(err)));
 };
 
 // subreddit info action creators
@@ -44,13 +42,11 @@ const requestSubredditInfoError = (subreddit, err) => ({
   payload: { subreddit, error: err }
 });
 
-export const fetchSubredditInfo = subreddit => {
-  return dispatch => {
-    dispatch(requestSubredditInfo(subreddit));
-    return getSubredditInfo(subreddit)
-      .then(subredditInfo =>
-        dispatch(receiveSubredditInfo(subreddit, subredditInfo))
-      )
-      .catch(err => dispatch(requestSubredditInfoError(subreddit, err)));
-  };
+export const fetchSubredditInfo = subreddit => dispatch => {
+  dispatch(requestSubredditInfo(subreddit));
+  return getSubredditInfo(subreddit)
+    .then(subredditInfo =>
+      dispatch(receiveSubredditInfo(subreddit, subredditInfo))
+    )
+    .catch(err => dispatch(requestSubredditInfoError(subreddit, err)));
 };

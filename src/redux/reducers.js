@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import {
   LOAD_BEST_POSTS_REQUEST,
   LOAD_BEST_POSTS_SUCCESS,
@@ -33,7 +32,6 @@ const bestPostsReducer = (state = initialBestPostsState, action) => {
       const {
         payload: { error }
       } = action;
-
       return {
         ...state,
         status: "ERROR",
@@ -66,7 +64,6 @@ const subredditInfoReducer = (state = initialSubredditInfoState, action) => {
       const {
         payload: { subredditInfo }
       } = action;
-
       return {
         ...state,
         [subreddit]: {
@@ -81,7 +78,6 @@ const subredditInfoReducer = (state = initialSubredditInfoState, action) => {
       const {
         payload: { error }
       } = action;
-
       const subreddit = extractSubredditFromAction(action);
       return {
         ...state,
@@ -102,8 +98,7 @@ const rootReducer = combineReducers({
   subredditInfo: subredditInfoReducer
 });
 
-//helpers
-
+// helpers
 const parseBestPosts = posts =>
   posts.map(
     ({

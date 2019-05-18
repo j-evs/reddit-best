@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 export const renderWithReduxAndRouter = (
   component,
   {
-    initialState,
     store = configureStore(),
     route = "/",
     history = createMemoryHistory({ initialEntries: [route] })

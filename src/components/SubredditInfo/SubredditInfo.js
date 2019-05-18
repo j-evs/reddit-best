@@ -26,7 +26,7 @@ const SubredditInfo = ({
 }) => {
   useEffect(() => {
     fetchSubredditInfo(subreddit);
-  }, [subreddit]);
+  }, [fetchSubredditInfo, subreddit]);
 
   const { title, public_description, subscribers } = subredditInfo;
   return (

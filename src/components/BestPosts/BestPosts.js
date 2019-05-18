@@ -15,7 +15,7 @@ import styles from "./BestPosts.module.css";
 const BestPosts = ({ bestPosts, fetchBestPosts, status, postsCount }) => {
   useEffect(() => {
     fetchBestPosts({ count: postsCount });
-  }, []);
+  }, [postsCount, fetchBestPosts]);
 
   const posts = bestPosts.map(post => <Post post={post} key={post.id} />);
   return (

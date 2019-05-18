@@ -23,7 +23,7 @@ const requestBestPostsError = err => ({
 
 export const fetchBestPosts = ({ count }) => {
   return dispatch => {
-    dispatch(requestBestPosts);
+    dispatch(requestBestPosts());
     return getBestPosts({ count })
       .then(posts => dispatch(receiveBestPosts(posts)))
       .catch(err => dispatch(requestBestPostsError(err)));

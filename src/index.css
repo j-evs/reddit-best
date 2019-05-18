@@ -6,17 +6,17 @@
 }
 
 :root {
+  --white: #ffffff;
+  --grey-100: #f8f9fa;
   --grey-200: #e2e7eb;
   --grey-500: #8a95a5;
-  --grey-100: #f8f9fa;
   --blue-400: #4583c2;
+  --blue-600: #25496e;
   --blue-700: #263d52;
-  --font-weight-black: 900;
-  --font-weight-bold: 700;
-  --white: #ffffff;
   --main-bg-color: var(--grey-100);
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
   --mobile-side-padding: 16px;
-  --mobile-breakpoint: 600px;
 }
 
 body {
@@ -25,9 +25,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--main-bg-color);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

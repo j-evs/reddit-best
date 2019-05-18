@@ -1,0 +1,33 @@
+.header {
+  padding: 48px var(--mobile-side-padding) 21px;
+}
+
+.headerMain {
+  font-size: 42px;
+  font-weight: var(--font-weight-black);
+  line-height: 1.076;
+  color: var(--blue-700);
+  margin: 0;
+  margin-bottom: 9px;
+}
+
+.headerLabel {
+  font-size: 22px;
+  color: var(--grey-500);
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .header {
+    padding: 80px calc(24px + var(--mobile-side-padding)) 38px;
+  }
+
+  .headerMain {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  .headerLabel {
+    font-size: 26px;
+  }
+}

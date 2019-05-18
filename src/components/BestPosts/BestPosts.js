@@ -1,17 +1,18 @@
 import React from "react";
+
+import Header from "../common/Header/Header";
 import styles from "./BestPosts.module.css";
 
 import { connect } from "react-redux";
+
+import { convertNumberToLocaleString } from "../../helpers";
 
 const BestPosts = ({ bestPosts }) => {
   const posts = bestPosts.map(post => <Post post={post} key={post.id} />);
   // TODO make post number as a variable (which is also used as a param in api request)
   return (
     <section className={styles.bestPosts}>
-      <header className={styles.header}>
-        <h1 className={styles.headerMain}>Home</h1>
-        <h2 className={styles.headerLabel}>Top 10 posts</h2>
-      </header>
+      <Header title="Home" label="Top 10 posts" />
       <div className={styles.postsWrapper}>{posts}</div>
     </section>
   );
@@ -24,7 +25,7 @@ const Post = ({ post: { title, subreddit, ups: upvotesCount } }) => (
     <span className={styles.postInfoSeparator}> · </span>
     <span className={styles.postUpvotes}>
       <span className={styles.postUpvotesCount}>
-        {upvotesCount.toLocaleString("nl-NL")}
+        {convertNumberToLocaleString(upvotesCount)}
       </span>{" "}
       points
     </span>

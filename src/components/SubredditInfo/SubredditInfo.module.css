@@ -1,0 +1,80 @@
+.navigation {
+  padding: 43px var(--mobile-side-padding) 18px;
+}
+
+.backIcon {
+  width: 8px;
+  height: 16px;
+}
+
+.backIcon path {
+  fill: var(--blue-400);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--blue-400);
+  font-weight: var(--font-weight-bold);
+  font-size: 22px;
+}
+
+.header {
+  padding-top: 0;
+  padding-bottom: 49px;
+}
+
+.subreddit {
+  padding: 0 var(--mobile-side-padding) 152px;
+}
+
+.subredditSection:not(:last-child) {
+  margin-bottom: 34px;
+}
+
+.subredditSectionTitle {
+  font-size: 22px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.316;
+  color: var(--blue-700);
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.subredditSectionDescription {
+  margin: 0;
+  color: var(--blue-600);
+  font-size: 18px;
+  line-height: 1.435;
+}
+
+@media (min-width: 600px) {
+  .subredditInfo {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .navigation {
+    padding: 64px var(--mobile-side-padding) 24px;
+  }
+
+  .header {
+    padding: 0 var(--mobile-side-padding) 75px;
+  }
+
+  .subreddit {
+    padding-bottom: 104px;
+  }
+
+  .subredditSectionTitle {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .subredditSectionDescription {
+    font-size: 20px;
+  }
+
+  .subredditSection:not(:last-child) {
+    margin-bottom: 44px;
+  }
+}

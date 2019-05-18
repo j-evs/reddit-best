@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
-import { convertNumberToLocaleString } from "../../helpers";
+import { fetchSubredditInfo } from "../../redux/actions";
+import {
+  selectSubredditInfo,
+  selectSubredditInfoStatus
+} from "../../redux/reducers";
 
 import Header from "../common/Header/Header";
 import { ReactComponent as BackIcon } from "./images/Back.svg";
+
+import { convertNumberToLocaleString } from "../../helpers";
 
 import styles from "./SubredditInfo.module.css";
 
@@ -13,8 +18,15 @@ const SubredditInfo = ({
   match: {
     params: { subreddit }
   },
-  data: { title, public_description, subscribers }
+  fetchSubredditInfo,
+  subredditInfo,
+  status
 }) => {
+  useEffect(() => {
+    fetchSubredditInfo(subreddit);
+  }, [subreddit]);
+
+  const { title, public_description, subscribers } = subredditInfo;
   return (
     <main className={styles.subredditInfo}>
       <nav className={styles.navigation}>
@@ -24,21 +36,23 @@ const SubredditInfo = ({
       </nav>
       <section>
         <Header
-          title={subreddit}
+          title={`r/${subreddit}`}
           label="Subreddit details"
           className={styles.header}
         />
-        <div className={styles.subreddit}>
-          <SubredditSection title="Title" description={title} />
-          <SubredditSection
-            title="Public description"
-            description={public_description}
-          />
-          <SubredditSection
-            title="Subscriber count"
-            description={convertNumberToLocaleString(subscribers)}
-          />
-        </div>
+        {status === "SUCCESS" && (
+          <div className={styles.subreddit}>
+            <SubredditSection title="Title" description={title} />
+            <SubredditSection
+              title="Public description"
+              description={public_description}
+            />
+            <SubredditSection
+              title="Subscriber count"
+              description={convertNumberToLocaleString(subscribers)}
+            />
+          </div>
+        )}
       </section>
     </main>
   );
@@ -51,14 +65,20 @@ const SubredditSection = ({ title, description }) => (
   </div>
 );
 const mapStateToProps = (
-  { subredditInfo },
+  state,
   {
     match: {
       params: { subreddit }
     }
   }
 ) => ({
-  data: subredditInfo[subreddit]
+  subredditInfo: selectSubredditInfo(state, subreddit),
+  status: selectSubredditInfoStatus(state, subreddit)
 });
-
-export default connect(mapStateToProps)(SubredditInfo);
+const mapDispatchToProps = {
+  fetchSubredditInfo
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SubredditInfo);

@@ -27,6 +27,7 @@
 .postSubreddit {
   color: var(--blue-400);
   font-weight: var(--font-weight-bold);
+  text-decoration: none;
 }
 
 .postUpvotes {

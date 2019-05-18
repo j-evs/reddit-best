@@ -24,7 +24,9 @@ const BestPosts = ({ bestPosts, fetchBestPosts, status, postsCount }) => {
       {status === "ERROR" && <Error />}
       {status === "LOADING" && <Loader />}
       {status === "SUCCESS" && (
-        <div className={styles.postsWrapper}>{posts}</div>
+        <div className={styles.postsWrapper} data-testid="best-posts-wrapper">
+          {posts}
+        </div>
       )}
     </section>
   );
@@ -39,7 +41,7 @@ const Post = ({
     permalink
   }
 }) => (
-  <article className={styles.post}>
+  <article className={styles.post} data-testid="post">
     <a
       className={styles.postLink}
       href={permalink}

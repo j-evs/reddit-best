@@ -39,7 +39,7 @@ const SubredditInfo = ({
           className={styles.header}
         />
         {status === "SUCCESS" && (
-          <article className={styles.subreddit}>
+          <article className={styles.subreddit} data-testid="subreddit-info">
             <SubredditSection title="Title" description={title} />
             <SubredditSection
               title="Public description"

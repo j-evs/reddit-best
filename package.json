@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "3.0.1"
+    "history": "^4.9.0",
+    "jest-dom": "^3.2.2",
+    "jest-fetch-mock": "^2.1.2",
+    "react-scripts": "3.0.1",
+    "react-testing-library": "^7.0.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",

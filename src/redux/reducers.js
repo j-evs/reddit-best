@@ -69,7 +69,7 @@ const bestPostsReducer = (state = initialBestPostsState, action) => {
       return {
         ...state,
         status: "LOADING",
-        err: null
+        error: null
       };
     }
     case LOAD_BEST_POSTS_SUCCESS: {
@@ -79,17 +79,17 @@ const bestPostsReducer = (state = initialBestPostsState, action) => {
       return {
         data: parseBestPosts(bestPosts),
         status: "SUCCESS",
-        err: null
+        error: null
       };
     }
     case LOAD_BEST_POSTS_FAILURE: {
       const {
-        payload: { err }
+        payload: { error }
       } = action;
       return {
         ...state.bestPosts,
         status: "ERROR",
-        err
+        error
       };
     }
     default:
@@ -108,7 +108,7 @@ const subredditInfoReducer = (state = initialSubredditInfoState, action) => {
         [subreddit]: {
           ...state[subreddit],
           status: "LOADING",
-          err: null,
+          error: null,
           data: {}
         }
       };
@@ -125,22 +125,22 @@ const subredditInfoReducer = (state = initialSubredditInfoState, action) => {
           ...state[subreddit],
           data: subredditInfo,
           status: "SUCCESS",
-          err: null
+          error: null
         }
       };
     }
     case LOAD_SUBREDDIT_INFO_FAILURE: {
       const {
-        payload: { err }
+        payload: { error }
       } = action;
-      const subreddit = extractSubredditFromAction(action);
 
+      const subreddit = extractSubredditFromAction(action);
       return {
         ...state,
         [subreddit]: {
           ...state[subreddit],
           status: "ERROR",
-          err
+          error
         }
       };
     }
@@ -172,6 +172,8 @@ const parseBestPosts = posts =>
 
 // selectors
 export const selectBestPosts = state => state.bestPosts.data;
+export const selectBestPostsStatus = state => state.bestPosts.status;
+
 export const selectSubredditInfo = (state, subreddit) => {
   if (state.subredditInfo[subreddit]) {
     return state.subredditInfo[subreddit].data;

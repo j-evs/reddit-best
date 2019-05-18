@@ -8,6 +8,8 @@ import {
 } from "../../redux/reducers";
 
 import Header from "../common/Header/Header";
+import Error from "../common/Error/Error";
+import Loader from "../common/Loader/Loader";
 import { ReactComponent as BackIcon } from "./images/Back.svg";
 
 import { convertNumberToLocaleString } from "../../helpers";
@@ -28,12 +30,8 @@ const SubredditInfo = ({
 
   const { title, public_description, subscribers } = subredditInfo;
   return (
-    <main className={styles.subredditInfo}>
-      <nav className={styles.navigation}>
-        <Link to="/" className={styles.link}>
-          <BackIcon className={styles.backIcon} /> Home
-        </Link>
-      </nav>
+    <div className={styles.subredditInfo}>
+      <Navigation />
       <section>
         <Header
           title={`r/${subreddit}`}
@@ -41,7 +39,7 @@ const SubredditInfo = ({
           className={styles.header}
         />
         {status === "SUCCESS" && (
-          <div className={styles.subreddit}>
+          <article className={styles.subreddit}>
             <SubredditSection title="Title" description={title} />
             <SubredditSection
               title="Public description"
@@ -51,12 +49,22 @@ const SubredditInfo = ({
               title="Subscriber count"
               description={convertNumberToLocaleString(subscribers)}
             />
-          </div>
+          </article>
         )}
+        {status === "ERROR" && <Error />}
+        {status === "LOADING" && <Loader />}
       </section>
-    </main>
+    </div>
   );
 };
+
+const Navigation = () => (
+  <nav className={styles.navigation}>
+    <Link to="/" className={styles.link}>
+      <BackIcon className={styles.backIcon} /> Home
+    </Link>
+  </nav>
+);
 
 const SubredditSection = ({ title, description }) => (
   <div className={styles.subredditSection}>
@@ -64,6 +72,7 @@ const SubredditSection = ({ title, description }) => (
     <p className={styles.subredditSectionDescription}>{description}</p>
   </div>
 );
+
 const mapStateToProps = (
   state,
   {

@@ -26,7 +26,7 @@ export const fetchBestPosts = ({ count }) => {
     dispatch(requestBestPosts);
     return getBestPosts({ count })
       .then(posts => dispatch(receiveBestPosts(posts)))
-      .catch(err => requestBestPostsError(err));
+      .catch(err => dispatch(requestBestPostsError(err)));
   };
 };
 
@@ -51,6 +51,6 @@ export const fetchSubredditInfo = subreddit => {
       .then(subredditInfo =>
         dispatch(receiveSubredditInfo(subreddit, subredditInfo))
       )
-      .catch(err => requestSubredditInfoError(subreddit, err));
+      .catch(err => dispatch(requestSubredditInfoError(subreddit, err)));
   };
 };

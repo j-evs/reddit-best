@@ -1,6 +1,5 @@
 const API_ROOT = "https://www.reddit.com";
 const BEST_POSTS_ENDPOINT = "/best.json";
-const BEST_POSTS_URL = `${API_ROOT}${BEST_POSTS_ENDPOINT}`;
 
 const getSubredditInfoUrl = subreddit =>
   `${API_ROOT}/r/${subreddit}/about.json`;
@@ -17,7 +16,7 @@ const rejectIfNot2xx = res => {
     const err = new Error(res.statusText);
     err.status = res.status;
     err.response = data;
-    throw err;
+    throw new Error(res.statusText);
   });
 };
 const getData = url =>

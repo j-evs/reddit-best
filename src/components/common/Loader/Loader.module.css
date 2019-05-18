@@ -1,34 +1,41 @@
 .loader {
-  width: 3.5em;
   display: flex;
-  flex-flow: row nowrap;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
 }
 
-.loader div {
-  width: 0.8em;
-  height: 0.8em;
-  border-radius: 50%;
-  background-color: var(--blue-700);
-  transform: translateY(-100%);
-  animation: wave 0.8s ease-in-out alternate infinite;
+.loader svg {
+  width: 3.75em;
+  transform-origin: center;
+  animation: rotate 2s linear infinite;
 }
 
-.loader div:nth-of-type(1) {
-  animation-delay: -0.4s;
+.loader svg circle {
+  fill: none;
+  stroke: var(--blue-700);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
 }
 
-.loader div:nth-of-type(2) {
-  animation-delay: -0.2s;
-}
-
-@keyframes wave {
-  from {
-    transform: translateY(-100%);
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
   }
-  to {
-    transform: translateY(100%);
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -125px;
   }
 }
